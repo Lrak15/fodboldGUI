@@ -1,17 +1,39 @@
 # importing tkinter module
 from tkinter import *
 from tkinter.ttk import * #progressbar
+import pickle
+import random
 
 from listWindow import listWindowClass
 from payWindow import payWindowClass
 from worstWindow import worstWindowClass
 
+
 class mainWindow:
     def __init__(self):
-        self.total = 1200
-        self.target = 4500
+        self.filename = 'betalinger.pk'
+        self.fodboldtur = {}
+        self.personbeløb = 4500
+        self.infile = open(self.filename, 'rb')
+        self.fodboldtur = pickle.load(self.infile)
+        self.infile.close()
+        self.total = sum(self.fodboldtur.values())
+        self.target = self.personbeløb * len(self.fodboldtur)
         # creating tkinter window
         self.root = Tk()
+
+        for item in self.fodboldtur.items():
+            print(item[0])
+            print(item[1])
+            print(self.fodboldtur[item[0]])
+            print(self.fodboldtur[item[0]])
+
+        print(self.fodboldtur.values())
+
+        print(self.fodboldtur)
+
+        print(self.fodboldtur['Ole Olsen'])
+
 
         #TEXT
 
@@ -35,11 +57,10 @@ class mainWindow:
         listButton = Button(self.root,text ="Liste over indbetalinger",command = lambda: listWindowClass(self))
         listButton.pack(padx = 20, pady = 10,side=LEFT)
 
-
         payButton = Button(self.root,text ="Indbetal",command = lambda: payWindowClass(self))
         payButton.pack(padx = 20, pady = 10,side=LEFT)
 
-        bottom3Button = Button(self.root,text ="Bund 3",command = lambda: worstWindowClass(self))
+        bottom3Button = Button(self.root,text ="Administration",command = lambda: worstWindowClass(self))
         bottom3Button.pack(padx = 20, pady = 10,side=LEFT)
 
         # infinite loop
@@ -47,3 +68,24 @@ class mainWindow:
 
 if __name__ == '__main__':
     main = mainWindow()
+
+
+# Øhm links:
+# https://stackoverflow.com/questions/4880960/how-to-sum-all-the-values-in-a-dictionary
+# https://www.geeksforgeeks.org/dropdown-menus-tkinter/
+# https://docs.python.org/3/library/tkinter.html
+# https://note.nkmk.me/en/python-dict-clear-pop-popitem-del/
+# https://docs.python.org/3/tutorial/errors.html
+# https://www.geeksforgeeks.org/python-accessing-key-value-in-dictionary/
+# https://www.geeksforgeeks.org/python-accessing-key-value-in-dictionary/
+# https://github.com/Robotto/fodboldGUI/blob/master/payWindow.py
+#
+#
+#
+#
+#
+#
+#
+#
+#
+

@@ -10,9 +10,20 @@ class listWindowClass:
         self.listWindow.title("List Window")
         self.listWindow.geometry("500x500")
 
-        Label(self.listWindow, text="Liste over indbetalinger.. eller.. noget der ligner en cylinder").pack()
+        Label(self.listWindow, text="Liste over indbetalinger").pack()
 
-        img = ImageTk.PhotoImage(Image.open("assets/img/cyl.png"))
-        panel = Label(self.listWindow, image=img)
-        panel.image = img
-        panel.pack(side="bottom", fill="both", expand="yes")
+
+        # TODO: liste over personer og deres indbetalinger
+        ting = self.master.fodboldtur.items()
+        personer = self.master.fodboldtur.keys()
+        print(personer)
+        '''
+        for person in self.master.fodboldtur:
+            Label(self.listWindow, text=f'{personer[person]}: {self.master.fodboldtur[personer[person]]},-').pack()
+        '''
+        for person in self.master.fodboldtur:
+            print(personer)
+
+        print(ting)
+
+        print(self.master.fodboldtur.get(1))
