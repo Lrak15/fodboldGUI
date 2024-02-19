@@ -27,3 +27,6 @@ class listWindowClass:
         print(ting)
 
         print(self.master.fodboldtur.get(1))
+
+
+        # TODO: fortæl hvilke 3 personer der har betalt mindst
